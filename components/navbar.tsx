@@ -62,11 +62,10 @@ export default function Navbar() {
   return (
     <div
       className={`w-full bg-black/60 z-50 ${
-        isSticky ? 'fixed top-0' : 'absolute bottom-[-20px]'
+        isSticky ? 'fixed top-0' : 'absolute bottom-80 sm:bottom-[-20px]'
       } mb-[100px]`}
     >
       <div className='w-full relative'>
-        {/* Mobile menu button - reverted to previous position */}
         <button
           onClick={toggleMenu}
           className='md:hidden absolute right-[5%] top-2 z-50 text-white p-2'
