@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import React from 'react'
+import { useForm as useFormspree } from '@formspree/react'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { useForm as useFormspree } from '@formspree/react'
 
-// Define the form schema with Zod
+// Define schema
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
   email: z.string().email({ message: 'Please enter a valid email address' }),
@@ -15,57 +15,64 @@ const formSchema = z.object({
     .min(10, { message: 'Message must be at least 10 characters' })
 })
 
-// Infer the type from the schema
+// Infer type
 type FormValues = z.infer<typeof formSchema>
 
 export default function ContactForm() {
   const [formspreeState, handleFormspreeSubmit] = useFormspree('xpwpbdwv')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<null | 'success' | 'error'>(
-    null
-  )
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors, isSubmitting, isSubmitted, isValid }
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      message: ''
-    }
+    mode: 'onBlur'
   })
 
-  const onSubmit = async (data: FormValues) => {
-    setIsSubmitting(true)
-
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      const response = await fetch('https://formspree.io/f/xpwpbdwv', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-
-      if (response.ok) {
-        setSubmitStatus('success')
-        reset()
-      } else {
-        setSubmitStatus('error')
-      }
+      await handleFormspreeSubmit(data)
     } catch (error) {
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
+      console.error('Submission error:', error)
     }
   }
 
+  React.useEffect(() => {
+    if (formspreeState.succeeded) {
+      reset()
+    }
+  }, [formspreeState.succeeded, reset])
+
+  React.useEffect(() => {
+    if (formspreeState.errors) {
+      console.error('Formspree errors:', formspreeState.errors)
+    }
+  }, [formspreeState.errors])
+
+  if (formspreeState.succeeded) {
+    return (
+      <p className='text-green-500 text-sm'>
+        Thanks for your message - we will get back to you soon!
+      </p>
+    )
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+    <form onSubmit={handleSubmit(onSubmit)} className='space-y-4' noValidate>
+      {isSubmitted && !isValid && !formspreeState.succeeded && (
+        <div className='text-red-500 text-sm'>
+          Please correct the errors below and try again.
+        </div>
+      )}
+
+      {formspreeState.errors && !formspreeState.succeeded && (
+        <div className='text-red-500 text-sm'>
+          There was an error submitting the form. Please try again later.
+        </div>
+      )}
+
       <div>
         <label htmlFor='name' className='block mb-1 font-rheiborn'>
           Name
@@ -112,22 +119,13 @@ export default function ContactForm() {
 
       <button
         type='submit'
-        disabled={isSubmitting}
+        disabled={formspreeState.submitting || isSubmitting}
         className='bg-cheetah-dark-brown text-black px-3 py-1 text-sm hover:bg-cheetah-brown hover:text-white transition-colors disabled:opacity-50'
       >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+        {formspreeState.submitting || isSubmitting
+          ? 'Sending...'
+          : 'Send Message'}
       </button>
-
-      {submitStatus === 'success' && (
-        <p className='text-green-500 text-sm'>
-          Your message has been sent successfully!
-        </p>
-      )}
-      {submitStatus === 'error' && (
-        <p className='text-red-500 text-sm'>
-          There was an error sending your message. Please try again.
-        </p>
-      )}
     </form>
   )
 }
