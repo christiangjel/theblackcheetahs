@@ -13,17 +13,13 @@ export default function Home() {
 
       <div id='container' className='overflow-x-hidden'>
         <Navbar />
-        {/* <div className='main-container'> */}
-        {/* <div className='main wrapper clearfix'> */}
         <HeaderLogo />
         <div className='clearfix'>&nbsp;</div>
         <AboutSection />
         <VideoSection />
         <ContactSection />
       </div>
-      {/* </div> */}
       <Footer />
-      {/* </div> */}
     </>
   )
 }
