@@ -1,0 +1,29 @@
+import Navbar from '@/components/navbar'
+import BackgroundImage from '@/components/background-image'
+import HeaderLogo from '@/components/header-logo'
+import AboutSection from '@/components/sections/about-section'
+import VideoSection from '@/components/sections/video-section'
+import ContactSection from '@/components/sections/contact-section'
+import Footer from '@/components/footer'
+
+export default function Home() {
+  return (
+    <>
+      <BackgroundImage />
+
+      <div id='container' className='overflow-x-hidden'>
+        <Navbar />
+        {/* <div className='main-container'> */}
+        {/* <div className='main wrapper clearfix'> */}
+        <HeaderLogo />
+        <div className='clearfix'>&nbsp;</div>
+        <AboutSection />
+        <VideoSection />
+        <ContactSection />
+      </div>
+      {/* </div> */}
+      <Footer />
+      {/* </div> */}
+    </>
+  )
+}

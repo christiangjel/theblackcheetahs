@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+a {
+  color: #705c4e;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+}
+
+input,
+textarea {
+  border: none;
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 14px;
+}
+
+/* Animation keyframes */
+@layer utilities {
+  @keyframes thedrop {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .animate-thedrop {
+    animation: thedrop 1s ease-in-out;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    content: ' ';
+    display: table;
+  }
+
+  .clearfix:after {
+    clear: both;
+  }
+}
