@@ -10,7 +10,7 @@ export default function BackgroundImage() {
         src='/img/bg-pic.jpg'
         alt='Background'
         fill
-        className='object-fit min-h-screen w-full h-screen sm:w-[160%] sm:-left-[40%]'
+        className='object-fit min-h-screen w-full h-screen sm:w-[160%] sm:-left-[40%] sm:object-cover sm:object-top'
         priority
       />
     </div>
