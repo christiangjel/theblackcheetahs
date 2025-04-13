@@ -104,7 +104,7 @@ export default function VideoSection() {
             ></iframe>
           </div>
           <p className='text-center mt-2 text-[0.85em] leading-[145%] font-futura'>
-            (Won the 2nd prize at Berlin Music Video Awards)
+            (Won the 2nd prize at Berlin Music Video Awards.)
           </p>
         </div>
       </div>

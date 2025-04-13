@@ -1,5 +1,5 @@
 import SocialLinks from '@/components/social-links'
-import { FaDownload } from 'react-icons/fa'
+// import { FaDownload } from 'react-icons/fa'
 
 export default function AboutSection() {
   return (

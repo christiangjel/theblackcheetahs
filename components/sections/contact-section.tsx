@@ -13,7 +13,7 @@ export default function ContactSection() {
       <div className='flex flex-col md:flex-row md:gap-8'>
         <div className='md:w-1/2'>
           <p className='text-[0.85em] leading-[145%] p-0 lg:px-5 font-futura'>
-            Send your love, hate, offers and proposals.
+            Send us your love, hate, offers and proposals!
             {/* <br /> */}
             {/* <a
               className='text-cheetah-brown hover:text-white'

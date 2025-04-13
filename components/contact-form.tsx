@@ -80,7 +80,7 @@ export default function ContactForm() {
         <input
           id='name'
           {...register('name')}
-          className='w-full bg-cheetah-dark-brown/45 border border-cheetah-brown p-2 text-white rounded-none text-sm'
+          className='w-full bg-cheetah-dark-brown/45 border border-black p-2 text-white rounded-none text-sm'
         />
         {errors.name && (
           <p className='text-red-400 text-xs mt-1'>{errors.name.message}</p>
@@ -95,7 +95,7 @@ export default function ContactForm() {
           id='email'
           type='email'
           {...register('email')}
-          className='w-full bg-cheetah-dark-brown/45 border border-cheetah-brown p-2 text-white rounded-none text-sm'
+          className='w-full bg-cheetah-dark-brown/45 border p-2 text-white rounded-none text-sm'
         />
         {errors.email && (
           <p className='text-red-400 text-xs mt-1'>{errors.email.message}</p>
@@ -110,7 +110,7 @@ export default function ContactForm() {
           id='message'
           {...register('message')}
           rows={4}
-          className='w-full bg-cheetah-dark-brown/45 border border-cheetah-brown p-2 text-white rounded-none text-sm'
+          className='w-full bg-cheetah-dark-brown/45 border p-2 text-white rounded-none text-sm'
         />
         {errors.message && (
           <p className='text-red-400 text-xs mt-1'>{errors.message.message}</p>
