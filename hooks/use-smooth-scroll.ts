@@ -1,28 +1,28 @@
-"use client"
+'use client'
 
-import { useEffect } from "react"
+import { useEffect } from 'react'
 
 export function useSmoothScroll() {
   useEffect(() => {
     // Handle anchor links for smooth scrolling
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement
-      if (target.tagName === "A") {
-        const href = (target as HTMLAnchorElement).getAttribute("href")
-        if (href && href.startsWith("#")) {
+      if (target.tagName === 'A') {
+        const href = (target as HTMLAnchorElement).getAttribute('href')
+        if (href && href.startsWith('#')) {
           e.preventDefault()
           const id = href.substring(1)
           const element = document.getElementById(id)
           if (element) {
-            element.scrollIntoView({ behavior: "smooth" })
+            element.scrollIntoView({ behavior: 'smooth' })
             // Update URL without page reload
-            window.history.pushState({}, "", href)
+            window.history.pushState({}, '', href)
           }
         }
       }
     }
 
-    document.addEventListener("click", handleAnchorClick)
-    return () => document.removeEventListener("click", handleAnchorClick)
+    document.addEventListener('click', handleAnchorClick)
+    return () => document.removeEventListener('click', handleAnchorClick)
   }, [])
 }
