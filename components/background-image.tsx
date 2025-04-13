@@ -12,7 +12,7 @@ export default function BackgroundImage() {
         // fill={false}
         fill
         // className='min-h-screen w-full sm:absolute sm:h-screen sm:w-[160%] sm:-left-[40%]'
-        className='object-fit min-h-screen w-full sm:h-screen sm:w-[160%] sm:-left-[40%]'
+        className='object-fit min-h-screen w-full h-screen sm:w-[160%] sm:-left-[40%]'
         priority
       />
     </div>

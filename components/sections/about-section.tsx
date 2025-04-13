@@ -5,7 +5,7 @@ export default function AboutSection() {
   return (
     <section
       id='about'
-      className='text-left p-4 md:p-10 md:pb-[70px] bg-black/60 text-white my-[100px] mx-[3%] sm:mx-[5%] md:mx-[10%]'
+      className='text-left p-4 md:p-10 md:pb-[40px] bg-black/60 text-white mb-[100] sm:my-[100px] mx-[3%] sm:mx-[5%] md:mx-[10%]'
     >
       <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-4 pt-4'>
         The Black Cheetahs
@@ -18,6 +18,7 @@ export default function AboutSection() {
           with post-modern electronics: A deep doomish sound of slow bpm&rsquo;s
           and a dark bluesy feel with an edge.
         </p>
+        <br />
 
         <p className='text-[0.85em] leading-[145%] p-0 lg:px-5 font-futura mb-8 sm:mb-0'>
           Their punk-hypnotic show and deep immersive sound is gaining them
