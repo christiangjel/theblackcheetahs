@@ -33,10 +33,6 @@ export default function ContactSection() {
         <div className='md:w-1/2 mt-8 md:mt-0'>
           <ContactForm />
         </div>
-
-        <div className='w-full mt-8 md:hidden'>
-          <SocialLinks />
-        </div>
       </div>
     </section>
   )

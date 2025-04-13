@@ -4,6 +4,7 @@ import HeaderLogo from '@/components/header-logo'
 import AboutSection from '@/components/sections/about-section'
 import VideoSection from '@/components/sections/video-section'
 import ContactSection from '@/components/sections/contact-section'
+import SocialLinks from '@/components/social-links'
 import Footer from '@/components/footer'
 
 export default function Home() {
@@ -18,6 +19,9 @@ export default function Home() {
         <AboutSection />
         <VideoSection />
         <ContactSection />
+        <div className='w-full md:hidden'>
+          <SocialLinks />
+        </div>
       </div>
       <Footer />
     </>
