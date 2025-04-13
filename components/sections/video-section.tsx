@@ -8,7 +8,7 @@ export default function VideoSection() {
         className='float-none w-full p-0 m-0 lg:clear-both'
         id='embeded-video'
       >
-        <div className='mb-2 sm:mb-16'>
+        <div className='mb-2 sm:mb-8'>
           <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
             Rails of Rust - Official video
           </h2>
@@ -24,7 +24,7 @@ export default function VideoSection() {
           </div>
         </div>
 
-        <div className='mb-2 sm:mb-16'>
+        <div className='mb-2 sm:mb-8'>
           <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
             Gold Gold Gold - Official video
           </h2>
@@ -40,7 +40,7 @@ export default function VideoSection() {
           </div>
         </div>
 
-        <div className='mb-2 sm:mb-16'>
+        <div className='mb-2 sm:mb-8'>
           <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
             Feathers and Filth - Live at SO36 Berlin
           </h2>
@@ -56,7 +56,7 @@ export default function VideoSection() {
           </div>
         </div>
 
-        <div className='mb-2 sm:mb-16'>
+        <div className='mb-2 sm:mb-8'>
           <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
             So Long A Line - Live at Jugendhaus Königstadt Berlin
           </h2>
@@ -72,7 +72,7 @@ export default function VideoSection() {
           </div>
         </div>
 
-        <div className='mb-2 sm:mb-16'>
+        <div className='mb-2 sm:mb-8'>
           <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
             Gold Gold Gold - live at Jugendhaus Königstadt Berlin
           </h2>
@@ -89,7 +89,7 @@ export default function VideoSection() {
         </div>
 
         <div className=''>
-          <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
+          <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase sm:mb-1 pt-4'>
             Weapons - Official video
           </h2>
           <div className='relative pb-[56.25%] pt-[30px] h-0 overflow-hidden'>
