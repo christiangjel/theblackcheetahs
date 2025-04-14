@@ -72,22 +72,6 @@ export default function VideoSection() {
           </div>
         </div>
 
-        <div className='mb-2 sm:mb-8'>
-          <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
-            Gold Gold Gold - live at Jugendhaus Königstadt Berlin
-          </h2>
-          <div className='relative pb-[56.25%] pt-[30px] h-0 overflow-hidden'>
-            <iframe
-              className='absolute top-0 left-0 w-full h-full'
-              width='560'
-              height='315'
-              src='https://www.youtube.com/embed/HaSg4n_MX5k'
-              frameBorder='0'
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-
         <div className=''>
           <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase sm:mb-1 pt-4'>
             Weapons - Official video

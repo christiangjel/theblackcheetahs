@@ -1,4 +1,5 @@
 import SocialLinks from '@/components/social-links'
+import BandcampPlayer from '@/components/bandcamp-player'
 // import { FaDownload } from 'react-icons/fa'
 
 export default function AboutSection() {
@@ -30,23 +31,7 @@ export default function AboutSection() {
 
       <div className='float-none w-full p-0 m-0 md:max-w-[500px] md:text-center md:mx-auto'>
         <div className='md:mt-[60px] text-center'>
-          <div id='player' className='w-full mb-6'>
-            <iframe
-              style={{
-                border: 0,
-                width: '100%',
-                maxWidth: '500px',
-                height: '705px'
-              }}
-              src='https://bandcamp.com/EmbeddedPlayer/album=3133021536/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=true/transparent=true/'
-              seamless
-              className='mx-auto'
-            >
-              <a href='https://waverecords.bandcamp.com/album/w141-the-black-cheetahs-slow-doomed-fever'>
-                Gold Gold Gold by The Black Cheetahs
-              </a>
-            </iframe>
-          </div>
+          <BandcampPlayer />
           <p className='text-[0.85em] leading-[145%] p-0 font-futura text-center'>
             Debut album <span className='italic'>Slow Doomed Fever</span> out
             now. <br />
@@ -69,7 +54,8 @@ export default function AboutSection() {
             >
               Wave Records
             </a>
-            <br /> <br />
+            <br />
+            <br />
             Follow The Black Cheetahs:
           </p>
         </div>

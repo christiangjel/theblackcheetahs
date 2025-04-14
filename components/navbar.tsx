@@ -1,7 +1,6 @@
 'use client'
 
-import type React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import { FaBars, FaTimes } from 'react-icons/fa'
 
@@ -9,20 +8,17 @@ export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
+  // Handle scroll effects
   useEffect(() => {
+    setIsMounted(true)
+
     const handleScroll = () => {
-      // Get the header height
-      const headerHeight = 300 // Approximate header height
+      // Sticky nav logic
+      setIsSticky(window.scrollY > 300)
 
-      // Check if we've scrolled past the header
-      if (window.scrollY > headerHeight) {
-        setIsSticky(true)
-      } else {
-        setIsSticky(false)
-      }
-
-      // Handle active section
+      // Active section detection
       const sections = document.querySelectorAll('section')
       sections.forEach((section) => {
         const sectionTop = section.offsetTop
@@ -36,39 +32,55 @@ export default function Navbar() {
       })
     }
 
+    // Set initial active section from URL hash
+    if (window.location.hash) {
+      setActiveSection(window.location.hash.substring(1))
+    }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    id: string
-  ) => {
+  // Smooth scroll handler
+  const scrollToSection = useCallback((e, id) => {
     e.preventDefault()
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
-      // Update URL without page reload
       window.history.pushState({}, '', `#${id}`)
       setActiveSection(id)
-      setIsMenuOpen(false) // Close mobile menu after clicking
+      setIsMenuOpen(false)
     }
-  }
+  }, [])
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  // Get class names for nav links
+  const getLinkClass = useCallback(
+    (section, isMobile = false) => {
+      const baseClass = isMobile
+        ? 'px-6 py-3 block text-white uppercase font-rheiborn text-xl'
+        : 'px-6 py-1 inline-block text-white uppercase font-rheiborn text-sm hover:bg-cheetah-dark-brown hover:text-black'
+
+      if (!isMounted) return baseClass
+
+      return activeSection === section
+        ? `${baseClass} bg-cheetah-dark-brown text-black`
+        : baseClass
+    },
+    [activeSection, isMounted]
+  )
 
   return (
     <>
+      {/* Mobile menu button */}
       <button
-        onClick={toggleMenu}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
         className='md:hidden fixed top-4 right-4 z-50 text-white p-2 bg-black/60'
         aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
       >
         {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
       </button>
 
+      {/* Nav container */}
       <div
         className={`w-full bg-black/60 z-40 ${
           isSticky ? 'fixed top-0' : 'absolute bottom-80 sm:bottom-[-20px]'
@@ -78,45 +90,19 @@ export default function Navbar() {
           {/* Desktop navigation */}
           <nav id='nav' className='py-0 hidden md:block'>
             <ul className='flex justify-center'>
-              <li>
-                <Link
-                  href='#about'
-                  onClick={(e) => scrollToSection(e, 'about')}
-                  className={`px-6 py-1 inline-block text-white uppercase font-rheiborn text-sm hover:bg-cheetah-dark-brown hover:text-black ${
-                    activeSection === 'about'
-                      ? 'bg-cheetah-dark-brown text-black'
-                      : ''
-                  }`}
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='#watch'
-                  onClick={(e) => scrollToSection(e, 'watch')}
-                  className={`px-6 py-1 inline-block text-white uppercase font-rheiborn text-sm hover:bg-cheetah-dark-brown hover:text-black ${
-                    activeSection === 'watch'
-                      ? 'bg-cheetah-dark-brown text-black'
-                      : ''
-                  }`}
-                >
-                  Videos
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='#contact'
-                  onClick={(e) => scrollToSection(e, 'contact')}
-                  className={`px-6 py-1 inline-block text-white uppercase font-rheiborn text-sm hover:bg-cheetah-dark-brown hover:text-black ${
-                    activeSection === 'contact'
-                      ? 'bg-cheetah-dark-brown text-black'
-                      : ''
-                  }`}
-                >
-                  Contact
-                </Link>
-              </li>
+              {['about', 'watch', 'contact'].map((section) => (
+                <li key={section}>
+                  <Link
+                    href={`#${section}`}
+                    onClick={(e) => scrollToSection(e, section)}
+                    className={getLinkClass(section)}
+                  >
+                    {section === 'watch'
+                      ? 'Videos'
+                      : section.charAt(0).toUpperCase() + section.slice(1)}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -127,45 +113,19 @@ export default function Navbar() {
             }`}
           >
             <ul className='flex flex-col items-center justify-center h-full space-y-8'>
-              <li className='w-full text-center'>
-                <Link
-                  href='#about'
-                  onClick={(e) => scrollToSection(e, 'about')}
-                  className={`px-6 py-3 block text-white uppercase font-rheiborn text-xl ${
-                    activeSection === 'about'
-                      ? 'bg-cheetah-dark-brown text-black'
-                      : ''
-                  }`}
-                >
-                  About
-                </Link>
-              </li>
-              <li className='w-full text-center'>
-                <Link
-                  href='#watch'
-                  onClick={(e) => scrollToSection(e, 'watch')}
-                  className={`px-6 py-3 block text-white uppercase font-rheiborn text-xl ${
-                    activeSection === 'watch'
-                      ? 'bg-cheetah-dark-brown text-black'
-                      : ''
-                  }`}
-                >
-                  Videos
-                </Link>
-              </li>
-              <li className='w-full text-center'>
-                <Link
-                  href='#contact'
-                  onClick={(e) => scrollToSection(e, 'contact')}
-                  className={`px-6 py-3 block text-white uppercase font-rheiborn text-xl ${
-                    activeSection === 'contact'
-                      ? 'bg-cheetah-dark-brown text-black'
-                      : ''
-                  }`}
-                >
-                  Contact
-                </Link>
-              </li>
+              {['about', 'watch', 'contact'].map((section) => (
+                <li key={section} className='w-full text-center'>
+                  <Link
+                    href={`#${section}`}
+                    onClick={(e) => scrollToSection(e, section)}
+                    className={getLinkClass(section, true)}
+                  >
+                    {section === 'watch'
+                      ? 'Videos'
+                      : section.charAt(0).toUpperCase() + section.slice(1)}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
