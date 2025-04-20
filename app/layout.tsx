@@ -5,7 +5,8 @@ import { futuraBook, rheiborn } from '@/lib/fonts'
 
 export const metadata: Metadata = {
   title: '★ THE BLACK CHEETAHS ★',
-  description: 'The Black Cheetahs Official site',
+  description:
+    'The Black Cheetahs Official site. The Black Cheetahs is the Berlin-based project of music producer and artist Sofia TK, pianist Jack Wendy and Christian Gjelstrup on the bass. Their music bears the imprint of southern garage rock combined with post-modern electronics: A deep doomish sound of slow bpm’s and a dark bluesy feel with an edge. Their punk-hypnotic show and deep immersive sound is gaining them followers from the dark rock and experimental scenes alike. A cathodic soundtrack that recalls and celebrates the spirit of sex, drugs, and rock’n’roll from its dark side. Debut album Slow Doomed Fever out now.',
   openGraph: {
     title: '★ THE BLACK CHEETAHS ★',
     description: 'The Black Cheetahs Official site',

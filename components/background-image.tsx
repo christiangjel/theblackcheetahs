@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function BackgroundImage() {
   return (
     <div
-      className='fixed h-full sm:h-[130%] w-[calc(100%+50px)] -left-8 z-[-10]'
+      className='fixed h-screen sm:h-[130%] w-[calc(100%+50px)] -left-8 z-[-10]'
       id='bg-image'
     >
       <Image

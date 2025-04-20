@@ -8,9 +8,9 @@ export default function AboutSection() {
       id='about'
       className='text-left p-4 md:p-10 md:pb-[40px] bg-black/60 text-white mb-[100] sm:mt-[50px] sm:mb-[100px] mx-[3%] sm:mx-[5%] md:mx-[10%]'
     >
-      <h2 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-4 pt-4'>
+      <h1 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-4 pt-4'>
         The Black Cheetahs
-      </h2>
+      </h1>
       <div className='float-none w-full p-0 m-0 lg:clear-both'>
         <p className='text-[0.85em] leading-[145%] p-0 lg:px-5 font-futura'>
           The Black Cheetahs is the Berlin-based project of music producer and

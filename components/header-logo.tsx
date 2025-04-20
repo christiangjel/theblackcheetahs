@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function HeaderLogo() {
   return (
-    <header className='mt-[50%] sm:mt-[8%] mb-[30%] float-left w-full clearfix'>
+    <header className='mt-[50%] sm:mt-[8%] mb-[30%] w-full clearfix'>
       <div id='intrologo' className='text-center mx-auto w-full'>
         <Image
           src='/img/tbc-letters.png'
