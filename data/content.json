@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "title": "★ THE BLACK CHEETAHS ★",
+    "description": "The Black Cheetahs Official site. The Black Cheetahs is the Berlin-based project of music producer and artist Sofia TK, pianist Jack Wendy and Christian Gjelstrup on the bass. Their music bears the imprint of southern garage rock combined with post-modern electronics: A deep doomish sound of slow bpm's and a dark bluesy feel with an edge. Their punk-hypnotic show and deep immersive sound is gaining them followers from the dark rock and experimental scenes alike. A cathodic soundtrack that recalls and celebrates the spirit of sex, drugs, and rock'n'roll from its dark side. Debut album Slow Doomed Fever out now.",
+    "ogTitle": "★ THE BLACK CHEETAHS ★",
+    "ogDescription": "The Black Cheetahs Official site",
+    "ogImageAlt": "The Black Cheetahs"
+  },
+  "about": {
+    "bandName": "The Black Cheetahs",
+    "paragraph1": "The Black Cheetahs is the Berlin-based project of music producer and artist Sofia TK, pianist Jack Wendy and Christian Gjelstrup on the bass. Their music bears the imprint of southern garage rock combined with post-modern electronics: A deep doomish sound of slow bpm's and a dark bluesy feel with an edge.",
+    "paragraph2": "Their punk-hypnotic show and deep immersive sound is gaining them followers from the dark rock and experimental scenes alike. A cathodic soundtrack that recalls and celebrates the spirit of sex, drugs, and rock'n'roll from its dark side.",
+    "debutAlbumText": "Debut album",
+    "debutAlbumTitle": "Slow Doomed Fever",
+    "debutAlbumSuffix": "out now.",
+    "firstSingleLabel": "Video for the first single:",
+    "firstSingleTitle": "Rails of Rust",
+    "orderNowLabel": "Order now:",
+    "waveRecordsLabel": "Wave Records",
+    "followUsLabel": "Follow The Black Cheetahs:"
+  },
+  "contact": {
+    "heading": "Contact",
+    "intro": "Send us your love, hate, offers and proposals!"
+  },
+  "contactForm": {
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "submitButton": "Send Message",
+    "submittingButton": "Sending...",
+    "successMessage": "Thanks for your message - we will get back to you soon!",
+    "validationSummary": "Please correct the errors below and try again.",
+    "submitError": "There was an error submitting the form. Please try again later.",
+    "validation": {
+      "nameMin": "Name must be at least 2 characters",
+      "emailInvalid": "Please enter a valid email address",
+      "messageMin": "Message must be at least 10 characters"
+    }
+  },
+  "footer": {
+    "copyright": "The Black Cheetahs. All rights reserved."
+  },
+  "nav": {
+    "videosLabel": "Videos",
+    "aboutLabel": "About",
+    "contactLabel": "Contact",
+    "openMenuAria": "Open menu",
+    "closeMenuAria": "Close menu"
+  },
+  "videos": [
+    { "title": "Rails of Rust - Official video" },
+    { "title": "Gold Gold Gold - Official video" },
+    { "title": "Feathers and Filth - Live at SO36 Berlin" },
+    { "title": "So Long A Line - Live at Jugendhaus Königstadt Berlin" },
+    {
+      "title": "Weapons - Official video",
+      "caption": "(Won the 2nd prize at Berlin Music Video Awards.)"
+    }
+  ],
+  "notFound": {
+    "title": "404",
+    "heading": "Page not found",
+    "message": "The page you're looking for doesn't exist or has moved.",
+    "backHome": "Back to home"
+  },
+  "preloader": {
+    "label": "Loading",
+    "title": "THE BLACK CHEETAHS"
+  },
+  "accessibility": {
+    "logoAlt": "The Black Cheetahs",
+    "backgroundAlt": "Background",
+    "skipToMain": "Skip to main content",
+    "navMainAria": "Main navigation",
+    "navMobileAria": "Mobile menu",
+    "externalLinkNewTab": "opens in new tab",
+    "bandcampPlayerTitle": "The Black Cheetahs - Slow Doomed Fever album player",
+    "videoSectionAria": "Videos"
+  }
+}

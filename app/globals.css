@@ -46,21 +46,7 @@ textarea {
   font-size: 14px;
 }
 
-/* Animation keyframes */
 @layer utilities {
-  @keyframes thedrop {
-    from {
-      transform: translateY(-100%);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
-
-  .animate-thedrop {
-    animation: thedrop 1s ease-in-out;
-  }
-
   .clearfix:before,
   .clearfix:after {
     content: ' ';

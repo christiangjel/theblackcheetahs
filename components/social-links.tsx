@@ -1,60 +1,42 @@
 import {
   FaBandcamp,
-  FaInstagram,
-  FaYoutube,
   FaFacebook,
+  FaInstagram,
+  FaLink,
   FaSpotify,
-  FaLink
+  FaYoutube
 } from 'react-icons/fa'
+import { SOCIAL_LINKS as SOCIAL_LINKS_DATA } from '@/lib/constants'
+import { content } from '@/lib/content'
+
+const ICONS = {
+  Bandcamp: FaBandcamp,
+  Instagram: FaInstagram,
+  YouTube: FaYoutube,
+  Facebook: FaFacebook,
+  Spotify: FaSpotify,
+  Linktree: FaLink
+} as const
 
 export default function SocialLinks() {
-  const socialLinks = [
-    {
-      name: 'Bandcamp',
-      url: 'https://theblackcheetahs.bandcamp.com/album/slow-doomed-fever',
-      icon: <FaBandcamp className='w-5 h-5 md:w-6 md:h-6' />
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/theblackcheetahs/',
-      icon: <FaInstagram className='w-5 h-5 md:w-6 md:h-6' />
-    },
-    {
-      name: 'YouTube',
-      url: 'https://www.youtube.com/channel/UCD0GLQ4LR2GnX9MOO0MRSNA',
-      icon: <FaYoutube className='w-5 h-5 md:w-6 md:h-6' />
-    },
-    {
-      name: 'Facebook',
-      url: 'https://www.facebook.com/theblackcheetahs/',
-      icon: <FaFacebook className='w-5 h-5 md:w-6 md:h-6' />
-    },
-    {
-      name: 'Spotify',
-      url: 'https://open.spotify.com/album/65eXAUa1zBUztNkkwQvJMm?utm_medium=share&utm_source=linktree',
-      icon: <FaSpotify className='w-5 h-5 md:w-6 md:h-6' />
-    },
-    {
-      name: 'Linktree',
-      url: 'https://linktr.ee/theblackcheetahs',
-      icon: <FaLink className='w-5 h-5 md:w-6 md:h-6' />
-    }
-  ]
-
   return (
-    <div className='flex flex-row flex-wrap justify-center gap-4 md:gap-8 mt-6 sm:mb-8 md:mb-0'>
-      {socialLinks.map((link) => (
-        <a
-          key={link.name}
-          href={link.url}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='text-cheetah-brown hover:text-white transition-colors'
-          aria-label={link.name}
-        >
-          {link.icon}
-        </a>
-      ))}
-    </div>
+    <ul className='mt-6 flex flex-row flex-wrap justify-center gap-4 sm:mb-8 md:mb-0 md:gap-8 list-none p-0 m-0'>
+      {SOCIAL_LINKS_DATA.map(({ name, url }) => {
+        const Icon = ICONS[name]
+        return (
+          <li key={name}>
+            <a
+              href={url}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-cheetah-brown transition-colors hover:text-white'
+              aria-label={`${name} (${content.accessibility.externalLinkNewTab})`}
+            >
+              <Icon className='h-5 w-5 md:h-6 md:w-6' />
+            </a>
+          </li>
+        )
+      })}
+    </ul>
   )
 }

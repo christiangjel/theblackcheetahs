@@ -1,64 +1,55 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import type { MouseEvent as ReactMouseEvent } from 'react'
 import Link from 'next/link'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import { useScrollSpy } from '@/hooks/useScrollSpy'
+import { content } from '@/lib/content'
+import {
+  SECTION_IDS,
+  STICKY_THRESHOLD,
+  SECTION_SCROLL_OFFSET
+} from '@/lib/constants'
+
+const NAV_LABELS: Record<string, string> = {
+  about: content.nav.aboutLabel,
+  watch: content.nav.videosLabel,
+  contact: content.nav.contactLabel
+}
 
 export default function Navbar() {
-  const [isSticky, setIsSticky] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
+  const { isSticky, activeSection, setActiveSection } = useScrollSpy({
+    stickyThreshold: STICKY_THRESHOLD,
+    sectionOffset: SECTION_SCROLL_OFFSET
+  })
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
-  // Handle scroll effects
   useEffect(() => {
     setIsMounted(true)
-
-    const handleScroll = () => {
-      // Sticky nav logic
-      setIsSticky(window.scrollY > 300)
-
-      // Active section detection
-      const sections = document.querySelectorAll('section')
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop
-        const sectionHeight = section.offsetHeight
-        if (
-          window.scrollY >= sectionTop - 100 &&
-          window.scrollY < sectionTop + sectionHeight - 100
-        ) {
-          setActiveSection(section.id)
-        }
-      })
-    }
-
-    // Set initial active section from URL hash
-    if (window.location.hash) {
-      setActiveSection(window.location.hash.substring(1))
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Smooth scroll handler
-  const scrollToSection = useCallback((e, id) => {
-    e.preventDefault()
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      window.history.pushState({}, '', `#${id}`)
-      setActiveSection(id)
-      setIsMenuOpen(false)
-    }
-  }, [])
+  const scrollToSection = useCallback(
+    (e: ReactMouseEvent<HTMLAnchorElement>, id: string) => {
+      e.preventDefault()
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+        window.history.pushState({}, '', `#${id}`)
+        setActiveSection(id)
+        setIsMenuOpen(false)
+      }
+    },
+    [setActiveSection]
+  )
 
-  // Get class names for nav links
   const getLinkClass = useCallback(
-    (section, isMobile = false) => {
+    (section: string, isMobile = false): string => {
       const baseClass = isMobile
-        ? 'px-6 py-3 block text-white uppercase font-rheiborn text-xl'
-        : 'px-6 py-1 inline-block text-white uppercase font-rheiborn text-sm hover:bg-cheetah-dark-brown hover:text-black'
+        ? 'block px-6 py-3 font-rheiborn text-xl uppercase text-white'
+        : 'inline-block px-6 py-1 font-rheiborn text-sm uppercase text-white hover:bg-cheetah-dark-brown hover:text-black'
 
       if (!isMounted) return baseClass
 
@@ -71,58 +62,58 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Mobile menu button */}
       <button
+        type='button'
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className='md:hidden fixed top-4 right-4 z-50 text-white p-2 bg-black/60'
-        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        className='fixed top-4 right-4 z-50 bg-black/60 p-2 text-white md:hidden'
+        aria-label={
+          isMenuOpen ? content.nav.closeMenuAria : content.nav.openMenuAria
+        }
       >
         {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
       </button>
 
-      {/* Nav container */}
       <div
-        className={`w-full bg-black/60 z-40 ${
+        className={`z-40 w-full bg-black/60 ${
           isSticky ? 'fixed top-0' : 'absolute bottom-80 sm:bottom-[-20px]'
         } mb-[100px]`}
       >
-        <div className='w-full relative'>
-          {/* Desktop navigation */}
-          <nav id='nav' className='py-0 hidden md:block'>
+        <div className='relative w-full'>
+          <nav
+            id='nav'
+            className='hidden py-0 md:block'
+            aria-label={content.accessibility.navMainAria}
+          >
             <ul className='flex justify-center'>
-              {['about', 'watch', 'contact'].map((section) => (
+              {SECTION_IDS.map((section) => (
                 <li key={section}>
                   <Link
                     href={`#${section}`}
                     onClick={(e) => scrollToSection(e, section)}
                     className={getLinkClass(section)}
                   >
-                    {section === 'watch'
-                      ? 'Videos'
-                      : section.charAt(0).toUpperCase() + section.slice(1)}
+                    {NAV_LABELS[section] ?? section}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          {/* Mobile navigation */}
           <nav
-            className={`md:hidden fixed inset-0 bg-black/95 z-40 transition-transform duration-300 ${
+            className={`fixed inset-0 z-40 bg-black/95 transition-transform duration-300 md:hidden ${
               isMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
+            aria-label={content.accessibility.navMobileAria}
           >
-            <ul className='flex flex-col items-center justify-center h-full space-y-8'>
-              {['about', 'watch', 'contact'].map((section) => (
+            <ul className='flex h-full flex-col items-center justify-center space-y-8'>
+              {SECTION_IDS.map((section) => (
                 <li key={section} className='w-full text-center'>
                   <Link
                     href={`#${section}`}
                     onClick={(e) => scrollToSection(e, section)}
                     className={getLinkClass(section, true)}
                   >
-                    {section === 'watch'
-                      ? 'Videos'
-                      : section.charAt(0).toUpperCase() + section.slice(1)}
+                    {NAV_LABELS[section] ?? section}
                   </Link>
                 </li>
               ))}

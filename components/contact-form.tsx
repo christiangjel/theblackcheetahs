@@ -1,25 +1,28 @@
 'use client'
 
-import React from 'react'
+import { useEffect } from 'react'
 import { useForm as useFormspree } from '@formspree/react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { content } from '@/lib/content'
 
-// Define schema
+const { contactForm: c } = content
+
 const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
-  email: z.string().email({ message: 'Please enter a valid email address' }),
-  message: z
-    .string()
-    .min(10, { message: 'Message must be at least 10 characters' })
+  name: z.string().min(2, { message: c.validation.nameMin }),
+  email: z.string().email({ message: c.validation.emailInvalid }),
+  message: z.string().min(10, { message: c.validation.messageMin })
 })
 
-// Infer type
 type FormValues = z.infer<typeof formSchema>
 
+const FORMSPREE_FORM_ID =
+  process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID ?? 'xpwpbdwv'
+
 export default function ContactForm() {
-  const [formspreeState, handleFormspreeSubmit] = useFormspree('xpwpbdwv')
+  const [formspreeState, handleFormspreeSubmit] =
+    useFormspree(FORMSPREE_FORM_ID)
 
   const {
     register,
@@ -39,43 +42,35 @@ export default function ContactForm() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (formspreeState.succeeded) {
       reset()
     }
   }, [formspreeState.succeeded, reset])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (formspreeState.errors) {
       console.error('Formspree errors:', formspreeState.errors)
     }
   }, [formspreeState.errors])
 
   if (formspreeState.succeeded) {
-    return (
-      <p className='text-green-500 text-sm'>
-        Thanks for your message - we will get back to you soon!
-      </p>
-    )
+    return <p className='text-green-500 text-sm'>{c.successMessage}</p>
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='space-y-4' noValidate>
       {isSubmitted && !isValid && !formspreeState.succeeded && (
-        <div className='text-red-500 text-sm'>
-          Please correct the errors below and try again.
-        </div>
+        <div className='text-sm text-red-500'>{c.validationSummary}</div>
       )}
 
       {formspreeState.errors && !formspreeState.succeeded && (
-        <div className='text-red-500 text-sm'>
-          There was an error submitting the form. Please try again later.
-        </div>
+        <div className='text-sm text-red-500'>{c.submitError}</div>
       )}
 
       <div>
         <label htmlFor='name' className='block mb-1 font-rheiborn'>
-          Name
+          {c.nameLabel}
         </label>
         <input
           id='name'
@@ -89,7 +84,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor='email' className='block mb-1 font-rheiborn'>
-          Email
+          {c.emailLabel}
         </label>
         <input
           id='email'
@@ -104,7 +99,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor='message' className='block mb-1 font-rheiborn'>
-          Message
+          {c.messageLabel}
         </label>
         <textarea
           id='message'
@@ -123,8 +118,8 @@ export default function ContactForm() {
         className='bg-cheetah-dark-brown text-black px-3 py-1 text-sm hover:bg-cheetah-brown hover:text-white transition-colors disabled:opacity-50'
       >
         {formspreeState.submitting || isSubmitting
-          ? 'Sending...'
-          : 'Send Message'}
+          ? c.submittingButton
+          : c.submitButton}
       </button>
     </form>
   )

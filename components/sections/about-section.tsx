@@ -1,73 +1,67 @@
-import SocialLinks from '@/components/social-links'
 import BandcampPlayer from '@/components/bandcamp-player'
-// import { FaDownload } from 'react-icons/fa'
+import SocialLinks from '@/components/social-links'
+import { content } from '@/lib/content'
+import { EXTERNAL_LINKS } from '@/lib/constants'
+
+const { about: c } = content
 
 export default function AboutSection() {
   return (
     <section
       id='about'
-      className='text-left p-4 md:p-10 md:pb-[40px] bg-black/60 text-white mb-[100] sm:mt-[50px] sm:mb-[100px] mx-[3%] sm:mx-[5%] md:mx-[10%]'
+      aria-labelledby='about-heading'
+      className='mx-[3%] mb-[100px] bg-black/60 p-4 text-left text-white sm:mx-[5%] sm:mt-[50px] sm:mb-[100px] md:mx-[10%] md:p-10 md:pb-[40px]'
     >
-      <h1 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-4 pt-4'>
-        The Black Cheetahs
+      <h1
+        id='about-heading'
+        className='mb-4 pt-4 p-0 font-rheiborn text-lg leading-[120%] uppercase lg:px-5 md:text-xl lg:text-3xl'
+      >
+        {c.bandName}
       </h1>
-      <div className='float-none w-full p-0 m-0 lg:clear-both'>
-        <p className='text-[0.85em] leading-[145%] p-0 lg:px-5 font-futura'>
-          The Black Cheetahs is the Berlin-based project of music producer and
-          artist Sofia TK, pianist Jack Wendy and Christian Gjelstrup on the
-          bass. Their music bears the imprint of southern garage rock combined
-          with post-modern electronics: A deep doomish sound of slow bpm&rsquo;s
-          and a dark bluesy feel with an edge.
+      <div className='float-none m-0 w-full p-0 lg:clear-both'>
+        <p className='font-futura text-[0.85em] leading-[145%] p-0 lg:px-5'>
+          {c.paragraph1}
         </p>
         <br />
 
-        <p className='text-[0.85em] leading-[145%] p-0 lg:px-5 font-futura mb-8 sm:mb-0'>
-          Their punk-hypnotic show and deep immersive sound is gaining them
-          followers from the dark rock and experimental scenes alike. A cathodic
-          soundtrack that recalls and celebrates the spirit of sex, drugs, and
-          rock&rsquo;n&rsquo;roll from its dark side.
+        <p className='mb-8 font-futura text-[0.85em] leading-[145%] p-0 lg:px-5 sm:mb-0'>
+          {c.paragraph2}
         </p>
       </div>
 
-      <div className='float-none w-full p-0 m-0 md:max-w-[500px] md:text-center md:mx-auto'>
-        <div className='md:mt-[60px] text-center'>
+      <div className='float-none m-0 w-full p-0 md:mx-auto md:max-w-[500px] md:text-center'>
+        <div className='text-center md:mt-[60px]'>
           <BandcampPlayer />
-          <p className='text-[0.85em] leading-[145%] p-0 font-futura text-center'>
-            Debut album <span className='italic'>Slow Doomed Fever</span> out
-            now. <br />
-            Video for the first single:
+          <p className='font-futura text-[0.85em] leading-[145%] p-0 text-center'>
+            {c.debutAlbumText}{' '}
+            <span className='italic'>{c.debutAlbumTitle}</span>{' '}
+            {c.debutAlbumSuffix} <br />
+            {c.firstSingleLabel}{' '}
             <a
-              className='text-cheetah-brown hover:text-white ml-1'
-              href='https://www.youtube.com/watch?v=OY4sF4dCluc'
+              className='ml-1 text-cheetah-brown hover:text-white'
+              href={EXTERNAL_LINKS.railsOfRust}
               target='_blank'
               rel='noopener noreferrer'
+              aria-label={`${c.firstSingleTitle} (${content.accessibility.externalLinkNewTab})`}
             >
-              Rails of Rust
+              {c.firstSingleTitle}
             </a>
             <br />
-            Order now:
+            {c.orderNowLabel}{' '}
             <a
-              className='text-cheetah-brown hover:text-white ml-1'
-              href='https://waverecords.bandcamp.com/album/w141-the-black-cheetahs-slow-doomed-fever'
+              className='ml-1 text-cheetah-brown hover:text-white'
+              href={EXTERNAL_LINKS.waveRecords}
               target='_blank'
               rel='noopener noreferrer'
+              aria-label={`${c.waveRecordsLabel} (${content.accessibility.externalLinkNewTab})`}
             >
-              Wave Records
+              {c.waveRecordsLabel}
             </a>
             <br />
             <br />
-            Follow The Black Cheetahs:
+            {c.followUsLabel}
           </p>
         </div>
-
-        {/* <div className='mt-6 text-center'>
-          <a
-            href='#'
-            className='inline-flex items-center gap-2 bg-cheetah-dark-brown text-black px-3 py-1 text-sm hover:bg-cheetah-brown hover:text-white transition-colors'
-          >
-            <FaDownload /> Download Press Kit
-          </a>
-        </div> */}
 
         <div className='text-center'>
           <SocialLinks />

@@ -1,22 +1,20 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useMounted } from '@/hooks/useMounted'
+import { content } from '@/lib/content'
+import { BANDCAMP_EMBED_URL } from '@/lib/constants'
 
 export default function BandcampPlayer() {
-  const [isMounted, setIsMounted] = useState(false)
+  const mounted = useMounted()
 
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  if (!isMounted) {
-    // Empty placeholder during server render
-    return <div className='w-full mb-6 h-[120px]' id='player' />
+  if (!mounted) {
+    return (
+      <div id='player' className='mb-6 h-[120px] w-full' aria-hidden='true' />
+    )
   }
 
-  // Only render the iframe on the client
   return (
-    <div id='player' className='w-full mb-6'>
+    <div id='player' className='mb-6 w-full'>
       <iframe
         style={{
           border: 0,
@@ -24,10 +22,11 @@ export default function BandcampPlayer() {
           maxWidth: '500px',
           height: '705px'
         }}
-        src='https://bandcamp.com/EmbeddedPlayer/album=3133021536/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=true/transparent=true/'
+        src={BANDCAMP_EMBED_URL}
         seamless
         className='mx-auto'
-      ></iframe>
+        title={content.accessibility.bandcampPlayerTitle}
+      />
     </div>
   )
 }

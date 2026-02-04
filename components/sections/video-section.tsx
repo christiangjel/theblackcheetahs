@@ -1,96 +1,78 @@
+import { content } from '@/lib/content'
+import { VIDEO_EMBEDS } from '@/lib/constants'
+
+const videos = content.videos
+const a11y = content.accessibility
+
+function VideoEmbed({
+  title,
+  src,
+  width,
+  height,
+  allow,
+  caption
+}: {
+  title: string
+  src: string
+  width: number
+  height: number
+  allow?: string
+  caption?: string
+}) {
+  return (
+    <article className='mb-2 sm:mb-8'>
+      <h3 className='mb-2 pt-4 font-rheiborn text-lg leading-[120%] uppercase p-0 lg:px-5 sm:mb-4 md:text-xl lg:text-3xl'>
+        {title}
+      </h3>
+      <div className='relative h-0 overflow-hidden pt-[30px] pb-[56.25%]'>
+        <iframe
+          className='absolute top-0 left-0 h-full w-full'
+          width={width}
+          height={height}
+          src={src}
+          title={title}
+          allow={allow}
+          allowFullScreen
+          loading='lazy'
+        />
+      </div>
+      {caption && (
+        <p className='mt-2 text-center font-futura text-[0.85em] leading-[145%]'>
+          {caption}
+        </p>
+      )}
+    </article>
+  )
+}
+
 export default function VideoSection() {
   return (
     <section
       id='watch'
-      className='text-left p-4 md:p-10 md:pb-[40px] bg-black/60 text-white my-[100px] mx-[3%] sm:mx-[5%] md:mx-[10%]'
+      aria-labelledby='watch-heading'
+      className='mx-[3%] my-[100px] bg-black/60 p-4 text-left text-white sm:mx-[5%] md:mx-[10%] md:p-10 md:pb-[40px]'
     >
-      <div
-        className='float-none w-full p-0 m-0 lg:clear-both'
-        id='embeded-video'
+      <h2
+        id='watch-heading'
+        className='sr-only mb-2 pt-4 font-rheiborn text-lg leading-[120%] uppercase p-0 lg:px-5 sm:mb-4 md:text-xl lg:text-3xl'
       >
-        <div className='mb-2 sm:mb-8'>
-          <h1 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
-            Rails of Rust - Official video
-          </h1>
-          <div className='relative pb-[56.25%] pt-[30px] h-0 overflow-hidden'>
-            <iframe
-              className='absolute top-0 left-0 w-full h-full'
-              width='560'
-              height='315'
-              src='https://www.youtube.com/embed/OY4sF4dCluc'
-              frameBorder='0'
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-
-        <div className='mb-2 sm:mb-8'>
-          <h1 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
-            Gold Gold Gold - Official video
-          </h1>
-          <div className='relative pb-[56.25%] pt-[30px] h-0 overflow-hidden'>
-            <iframe
-              className='absolute top-0 left-0 w-full h-full'
-              width='560'
-              height='315'
-              src='https://www.youtube.com/embed/NHBq3kYBaKI?si=NzzfKcEdUe-UyVt1'
-              frameBorder='0'
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-
-        <div className='mb-2 sm:mb-8'>
-          <h1 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
-            Feathers and Filth - Live at SO36 Berlin
-          </h1>
-          <div className='relative pb-[56.25%] pt-[30px] h-0 overflow-hidden'>
-            <iframe
-              className='absolute top-0 left-0 w-full h-full'
-              width='560'
-              height='315'
-              src='https://www.youtube.com/embed/xhnwvr4cuek'
-              frameBorder='0'
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-
-        <div className='mb-2 sm:mb-8'>
-          <h1 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase mb-2 sm:mb-4 pt-4'>
-            So Long A Line - Live at Jugendhaus Königstadt Berlin
-          </h1>
-          <div className='relative pb-[56.25%] pt-[30px] h-0 overflow-hidden'>
-            <iframe
-              className='absolute top-0 left-0 w-full h-full'
-              width='560'
-              height='315'
-              src='https://www.youtube.com/embed/5phQOblfels'
-              frameBorder='0'
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-
-        <div className=''>
-          <h1 className='text-lg md:text-xl lg:text-3xl leading-[120%] p-0 lg:px-5 font-rheiborn uppercase sm:mb-1 pt-4'>
-            Weapons - Official video
-          </h1>
-          <div className='relative pb-[56.25%] pt-[30px] h-0 overflow-hidden'>
-            <iframe
-              className='absolute top-0 left-0 w-full h-full'
-              src='https://player.vimeo.com/video/77074704'
-              width='560'
-              height='255'
-              frameBorder='0'
-              allow='autoplay; fullscreen'
-              allowFullScreen
-            ></iframe>
-          </div>
-          <p className='text-center mt-2 text-[0.85em] leading-[145%] font-futura'>
-            (Won the 2nd prize at Berlin Music Video Awards.)
-          </p>
-        </div>
+        {a11y.videoSectionAria}
+      </h2>
+      <div
+        id='embedded-video'
+        className='float-none m-0 w-full p-0 lg:clear-both'
+      >
+        {videos.map((item, i) => (
+          <VideoEmbed
+            key={item.title}
+            title={item.title}
+            src={VIDEO_EMBEDS[i].src}
+            width={VIDEO_EMBEDS[i].width}
+            height={VIDEO_EMBEDS[i].height}
+            allow={VIDEO_EMBEDS[i].allow}
+            caption={'caption' in item ? item.caption : undefined}
+          />
+        ))}
       </div>
     </section>
   )
