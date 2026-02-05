@@ -6,6 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { content } from '@/lib/content'
+import { FORMSPREE_CONFIG } from '@/lib/constants'
 
 const { contactForm: c } = content
 
@@ -17,13 +18,12 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
-const FORMSPREE_FORM_ID = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
-const formIdForHook = FORMSPREE_FORM_ID ?? 'placeholder-no-form-id'
+const formIdForHook = FORMSPREE_CONFIG.FORM_ID || 'placeholder-no-form-id'
 
 export const ContactForm = () => {
   const [formspreeState, handleFormspreeSubmit] = useFormspree(formIdForHook)
 
-  if (!FORMSPREE_FORM_ID) {
+  if (!FORMSPREE_CONFIG.FORM_ID) {
     if (process.env.NODE_ENV === 'development') {
       return (
         <p className='text-sm text-amber-500'>
@@ -80,11 +80,15 @@ export const ContactForm = () => {
       )}
 
       <div>
-        <label htmlFor='name' className='block mb-1 font-rheiborn'>
+        <label htmlFor='contact-name' className='block mb-1 font-rheiborn'>
           {c.nameLabel}
         </label>
         <input
-          id='name'
+          id='contact-name'
+          name='name'
+          type='text'
+          autoComplete='name'
+          aria-label={c.nameLabel}
           {...register('name')}
           className='w-full rounded-none border border-black bg-cheetah-dark-brown/45 p-2 text-sm text-white'
         />
@@ -94,12 +98,15 @@ export const ContactForm = () => {
       </div>
 
       <div>
-        <label htmlFor='email' className='block mb-1 font-rheiborn'>
+        <label htmlFor='contact-email' className='block mb-1 font-rheiborn'>
           {c.emailLabel}
         </label>
         <input
-          id='email'
+          id='contact-email'
+          name='email'
           type='email'
+          autoComplete='email'
+          aria-label={c.emailLabel}
           {...register('email')}
           className='w-full rounded-none border bg-cheetah-dark-brown/45 p-2 text-sm text-white'
         />
@@ -109,11 +116,14 @@ export const ContactForm = () => {
       </div>
 
       <div>
-        <label htmlFor='message' className='block mb-1 font-rheiborn'>
+        <label htmlFor='contact-message' className='block mb-1 font-rheiborn'>
           {c.messageLabel}
         </label>
         <textarea
-          id='message'
+          id='contact-message'
+          name='message'
+          autoComplete='off'
+          aria-label={c.messageLabel}
           {...register('message')}
           rows={4}
           className='w-full rounded-none border bg-cheetah-dark-brown/45 p-2 text-sm text-white'

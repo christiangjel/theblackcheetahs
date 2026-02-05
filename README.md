@@ -27,11 +27,12 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ### Environment
 
-Copy `.env.example` to `.env.local` and set (or create `.env.local`):
+Copy `.env.example` to `.env.local` and set:
 
 | Variable | Description |
 |----------|-------------|
-| `NEXT_PUBLIC_FORMSPREE_FORM_ID` | Formspree form ID for the contact form. **Required** for the contact form to work. |
+| `NEXT_PUBLIC_FORMSPREE_FORM_ID` | Formspree form ID for the contact form. Set in `.env.local` for local dev. Add the same variable in Vercel (Project → Settings → Environment Variables) for production. |
+| `NEXT_PUBLIC_SITE_URL` | Optional. Canonical site URL for metadata, sitemap, robots. Default: `https://www.theblackcheetahs.com/`. Set in Vercel for production if you use a custom domain or need to override. |
 
 ### Build and lint
 
