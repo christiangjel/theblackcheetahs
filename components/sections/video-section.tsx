@@ -33,7 +33,6 @@ function VideoEmbed({
           title={title}
           allow={allow}
           allowFullScreen
-          loading='lazy'
         />
       </div>
       {caption && (
@@ -45,7 +44,7 @@ function VideoEmbed({
   )
 }
 
-export default function VideoSection() {
+export const VideoSection = () => {
   return (
     <section
       id='watch'

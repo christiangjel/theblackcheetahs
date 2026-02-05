@@ -9,15 +9,17 @@ const FADE_DURATION_MS = 400
 /**
  * Full-screen preloader overlay. Fades out after page load.
  */
-export default function Preloader() {
+export const Preloader = () => {
   const [isVisible, setIsVisible] = useState(true)
   const [isFading, setIsFading] = useState(false)
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>
+    document.body.classList.add('preloader-active')
 
     const hide = () => {
       timeoutId = setTimeout(() => {
+        document.body.classList.remove('preloader-active')
         setIsFading(true)
         setTimeout(() => setIsVisible(false), FADE_DURATION_MS)
       }, MIN_DISPLAY_MS)
@@ -30,6 +32,7 @@ export default function Preloader() {
     }
 
     return () => {
+      document.body.classList.remove('preloader-active')
       window.removeEventListener('load', hide)
       clearTimeout(timeoutId)
     }

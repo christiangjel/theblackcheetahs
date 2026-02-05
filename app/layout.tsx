@@ -4,7 +4,7 @@ import './globals.css'
 import { futuraBook, rheiborn } from '@/lib/fonts'
 import { content } from '@/lib/content'
 import { SITE_URL, OG_IMAGE_URL } from '@/lib/constants'
-import Preloader from '@/components/preloader'
+import { Preloader } from '@/components/preloader'
 
 const { metadata: meta, about } = content
 

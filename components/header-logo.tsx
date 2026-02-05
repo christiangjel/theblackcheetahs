@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { content } from '@/lib/content'
 
-export default function HeaderLogo() {
+export const HeaderLogo = () => {
   return (
     <header className="clearfix mt-[50%] mb-[30%] w-full sm:mt-[8%]">
       <div id="intrologo" className="mx-auto w-full text-center">

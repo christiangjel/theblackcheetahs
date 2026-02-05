@@ -1,11 +1,11 @@
-import BandcampPlayer from '@/components/bandcamp-player'
-import SocialLinks from '@/components/social-links'
+import { BandcampPlayer } from '@/components/bandcamp-player'
+import { SocialLinks } from '@/components/social-links'
 import { content } from '@/lib/content'
 import { EXTERNAL_LINKS } from '@/lib/constants'
 
 const { about: c } = content
 
-export default function AboutSection() {
+export const AboutSection = () => {
   return (
     <section
       id='about'

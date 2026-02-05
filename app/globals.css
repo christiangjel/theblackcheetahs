@@ -19,6 +19,11 @@ body {
   background-color: #000;
 }
 
+/* Hide scrollbar and prevent scroll while preloader is visible */
+body.preloader-active {
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3,
@@ -72,14 +77,8 @@ textarea {
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #555;
+    background: #554130;
     border-radius: 5px;
-    z-index: 9999;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #705c4e;
     z-index: 9999;
   }
 }

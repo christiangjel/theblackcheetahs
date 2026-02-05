@@ -1,10 +1,10 @@
-import ContactForm from '@/components/contact-form'
-import SocialLinks from '@/components/social-links'
+import { ContactForm } from '@/components/contact-form'
+import { SocialLinks } from '@/components/social-links'
 import { content } from '@/lib/content'
 
 const { contact: c } = content
 
-export default function ContactSection() {
+export const ContactSection = () => {
   return (
     <section
       id='contact'

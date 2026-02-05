@@ -20,7 +20,7 @@ type FormValues = z.infer<typeof formSchema>
 const FORMSPREE_FORM_ID =
   process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID ?? 'xpwpbdwv'
 
-export default function ContactForm() {
+export const ContactForm = () => {
   const [formspreeState, handleFormspreeSubmit] =
     useFormspree(FORMSPREE_FORM_ID)
 

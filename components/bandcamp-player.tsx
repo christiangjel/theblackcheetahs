@@ -1,18 +1,7 @@
-'use client'
-
-import { useMounted } from '@/hooks/useMounted'
 import { content } from '@/lib/content'
 import { BANDCAMP_EMBED_URL } from '@/lib/constants'
 
-export default function BandcampPlayer() {
-  const mounted = useMounted()
-
-  if (!mounted) {
-    return (
-      <div id='player' className='mb-6 h-[120px] w-full' aria-hidden='true' />
-    )
-  }
-
+export const BandcampPlayer = () => {
   return (
     <div id='player' className='mb-6 w-full'>
       <iframe

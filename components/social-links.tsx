@@ -18,7 +18,7 @@ const ICONS = {
   Linktree: FaLink
 } as const
 
-export default function SocialLinks() {
+export const SocialLinks = () => {
   return (
     <ul className='mt-6 flex flex-row flex-wrap justify-center gap-4 sm:mb-8 md:mb-0 md:gap-8 list-none p-0 m-0'>
       {SOCIAL_LINKS_DATA.map(({ name, url }) => {

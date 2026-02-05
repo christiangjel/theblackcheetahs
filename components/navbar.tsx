@@ -18,7 +18,7 @@ const NAV_LABELS: Record<string, string> = {
   contact: content.nav.contactLabel
 }
 
-export default function Navbar() {
+export const Navbar = () => {
   const { isSticky, activeSection, setActiveSection } = useScrollSpy({
     stickyThreshold: STICKY_THRESHOLD,
     sectionOffset: SECTION_SCROLL_OFFSET

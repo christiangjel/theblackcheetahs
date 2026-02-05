@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import BackgroundImage from '@/components/background-image'
-import Footer from '@/components/footer'
+import { BackgroundImage } from '@/components/background-image'
+import { Footer } from '@/components/footer'
 import { content } from '@/lib/content'
 
 const nf = content.notFound

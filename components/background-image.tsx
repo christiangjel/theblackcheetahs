@@ -1,16 +1,16 @@
 import Image from 'next/image'
 
-export default function BackgroundImage() {
+export const BackgroundImage = () => {
   return (
     <div
-      className='fixed h-screen sm:h-[130%] w-[calc(100%+50px)] -left-8 z-[-10]'
+      className='fixed left-[-3rem] h-[80svh] min-h-[80svh] w-[calc(100%+60px)] z-[-10] sm:-left-8 sm:h-[130%] sm:min-h-0 sm:w-[calc(100%+50px)]'
       id='bg-image'
     >
       <Image
         src='/img/bg-pic.jpg'
         alt='Background'
         fill
-        className='object-fit min-h-screen w-full h-screen sm:w-[160%] sm:-left-[40%] sm:object-cover sm:object-top'
+        className='object-cover object-top w-full sm:w-[160%] sm:-left-[40%]'
         priority
       />
     </div>
