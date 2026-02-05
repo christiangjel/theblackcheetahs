@@ -66,7 +66,7 @@ export const ContactForm = () => {
   }, [formspreeState.errors])
 
   if (formspreeState.succeeded) {
-    return <p className='text-green-500 text-sm'>{c.successMessage}</p>
+    return <p className='text-white text-sm'>{c.successMessage}</p>
   }
 
   return (
