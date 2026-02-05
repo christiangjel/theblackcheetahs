@@ -42,8 +42,7 @@ export const Preloader = () => {
 
   return (
     <div
-      className='fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 bg-black transition-opacity duration-500 ease-out'
-      style={{ opacity: isFading ? 0 : 1 }}
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 bg-black transition-opacity duration-500 ease-out ${isFading ? 'opacity-0' : 'opacity-100'}`}
       aria-live='polite'
       aria-label={content.preloader.label}
     >

@@ -26,9 +26,13 @@ export const ContactForm = () => {
   if (!FORMSPREE_CONFIG.FORM_ID) {
     if (process.env.NODE_ENV === 'development') {
       return (
-        <p className='text-sm text-amber-500'>
-          Set <code className='px-1 bg-black/20'>NEXT_PUBLIC_FORMSPREE_FORM_ID</code> in{' '}
-          <code className='px-1 bg-black/20'>.env.local</code> to enable the contact form.
+        <p className='text-sm text-cheetah-brown'>
+          Set{' '}
+          <code className='px-1 bg-black/20'>
+            NEXT_PUBLIC_FORMSPREE_FORM_ID
+          </code>{' '}
+          in <code className='px-1 bg-black/20'>.env.local</code> to enable the
+          contact form.
         </p>
       )
     }
@@ -66,7 +70,7 @@ export const ContactForm = () => {
   }, [formspreeState.errors])
 
   if (formspreeState.succeeded) {
-    return <p className='text-white text-sm'>{c.successMessage}</p>
+    return <p className='text-cheetah-brown text-sm'>{c.successMessage}</p>
   }
 
   return (
