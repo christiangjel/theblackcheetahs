@@ -85,7 +85,6 @@ export const ContactForm = () => {
         </label>
         <input
           id='contact-name'
-          name='name'
           type='text'
           autoComplete='name'
           aria-label={c.nameLabel}
@@ -103,7 +102,6 @@ export const ContactForm = () => {
         </label>
         <input
           id='contact-email'
-          name='email'
           type='email'
           autoComplete='email'
           aria-label={c.emailLabel}
@@ -121,7 +119,6 @@ export const ContactForm = () => {
         </label>
         <textarea
           id='contact-message'
-          name='message'
           autoComplete='off'
           aria-label={c.messageLabel}
           {...register('message')}
