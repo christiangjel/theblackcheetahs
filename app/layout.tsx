@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       </head>
       <body
-        className='m-0 h-full w-full bg-black p-0 text-center font-futura text-base leading-relaxed text-white'
+        className='m-0 h-full w-full p-0 bg-black text-center font-futura text-base leading-relaxed text-white'
         suppressHydrationWarning
       >
         <script

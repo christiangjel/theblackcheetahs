@@ -51,7 +51,7 @@ export const Preloader = () => {
         ★ {content.preloader.title} ★
       </p>
       <div
-        className='h-8 w-8 animate-spin rounded-full border-2 border-cheetah-brown border-t-transparent'
+        className='h-8 w-8 rounded-full border-2 border-cheetah-brown border-t-transparent animate-spin'
         aria-hidden
       />
     </div>

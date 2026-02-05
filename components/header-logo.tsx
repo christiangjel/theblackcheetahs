@@ -10,7 +10,7 @@ export const HeaderLogo = () => {
           alt={content.accessibility.logoAlt}
           width={1200}
           height={300}
-          className="h-auto max-w-none w-full px-0"
+          className="h-auto w-full max-w-none px-0"
           priority
           sizes="100vw"
         />

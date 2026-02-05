@@ -21,7 +21,7 @@ function VideoEmbed({
 }) {
   return (
     <article className='mb-2 sm:mb-8'>
-      <h3 className='mb-2 pt-4 font-rheiborn text-lg leading-[120%] uppercase p-0 lg:px-5 sm:mb-4 md:text-xl lg:text-3xl'>
+      <h3 className='mb-2 pt-4 p-0 font-rheiborn text-lg leading-[120%] uppercase lg:px-5 sm:mb-4 md:text-xl lg:text-3xl'>
         {title}
       </h3>
       <div className='relative h-0 overflow-hidden pt-[30px] pb-[56.25%]'>
@@ -49,11 +49,11 @@ export const VideoSection = () => {
     <section
       id='watch'
       aria-labelledby='watch-heading'
-      className='mx-[3%] my-[100px] bg-black/60 p-4 text-left text-white sm:mx-[5%] md:mx-[10%] md:p-10 md:pb-[40px]'
+      className='mx-[3%] my-[100px] sm:mx-[5%] md:mx-[10%] p-4 md:p-10 md:pb-[40px] bg-black/60 text-left text-white'
     >
       <h2
         id='watch-heading'
-        className='sr-only mb-2 pt-4 font-rheiborn text-lg leading-[120%] uppercase p-0 lg:px-5 sm:mb-4 md:text-xl lg:text-3xl'
+        className='sr-only mb-2 pt-4 p-0 font-rheiborn text-lg leading-[120%] uppercase lg:px-5 sm:mb-4 md:text-xl lg:text-3xl'
       >
         {a11y.videoSectionAria}
       </h2>

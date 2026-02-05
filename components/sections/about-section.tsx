@@ -10,7 +10,7 @@ export const AboutSection = () => {
     <section
       id='about'
       aria-labelledby='about-heading'
-      className='mx-[3%] mb-[100px] bg-black/60 p-4 text-left text-white sm:mx-[5%] sm:mt-[50px] sm:mb-[100px] md:mx-[10%] md:p-10 md:pb-[40px]'
+      className='mx-[3%] mb-[100px] sm:mx-[5%] sm:mt-[50px] sm:mb-[100px] md:mx-[10%] p-4 md:p-10 md:pb-[40px] bg-black/60 text-left text-white'
     >
       <h1
         id='about-heading'
@@ -19,20 +19,20 @@ export const AboutSection = () => {
         {c.bandName}
       </h1>
       <div className='float-none m-0 w-full p-0 lg:clear-both'>
-        <p className='font-futura text-[0.85em] leading-[145%] p-0 lg:px-5'>
+        <p className='p-0 font-futura text-[0.85em] leading-[145%] lg:px-5'>
           {c.paragraph1}
         </p>
         <br />
 
-        <p className='mb-8 font-futura text-[0.85em] leading-[145%] p-0 lg:px-5 sm:mb-0'>
+        <p className='mb-8 p-0 font-futura text-[0.85em] leading-[145%] lg:px-5 sm:mb-0'>
           {c.paragraph2}
         </p>
       </div>
 
       <div className='float-none m-0 w-full p-0 md:mx-auto md:max-w-[500px] md:text-center'>
-        <div className='text-center md:mt-[60px]'>
+        <div className='md:mt-[60px] text-center'>
           <BandcampPlayer />
-          <p className='font-futura text-[0.85em] leading-[145%] p-0 text-center'>
+          <p className='p-0 text-center font-futura text-[0.85em] leading-[145%]'>
             {c.debutAlbumText}{' '}
             <span className='italic'>{c.debutAlbumTitle}</span>{' '}
             {c.debutAlbumSuffix} <br />

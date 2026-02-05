@@ -9,7 +9,7 @@ export const ContactSection = () => {
     <section
       id='contact'
       aria-labelledby='contact-heading'
-      className='mx-[3%] my-[100px] bg-black/60 p-4 text-left text-white sm:mx-[5%] md:mx-[10%] md:p-10 md:pb-[40px]'
+      className='mx-[3%] my-[100px] sm:mx-[5%] md:mx-[10%] p-4 md:p-10 md:pb-[40px] bg-black/60 text-left text-white'
     >
       <h2
         id='contact-heading'
@@ -19,11 +19,11 @@ export const ContactSection = () => {
       </h2>
       <div className='flex flex-col md:flex-row md:gap-8'>
         <div className='md:w-1/2'>
-          <p className='font-futura text-[0.85em] leading-[145%] p-0 lg:px-5'>
+          <p className='p-0 font-futura text-[0.85em] leading-[145%] lg:px-5'>
             {c.intro}
           </p>
 
-          <div className='mt-12 hidden md:block'>
+          <div className='hidden mt-12 md:block'>
             <SocialLinks />
           </div>
         </div>

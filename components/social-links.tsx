@@ -20,7 +20,7 @@ const ICONS = {
 
 export const SocialLinks = () => {
   return (
-    <ul className='mt-6 flex flex-row flex-wrap justify-center gap-4 sm:mb-8 md:mb-0 md:gap-8 list-none p-0 m-0'>
+    <ul className='m-0 mt-6 flex flex-row flex-wrap justify-center gap-4 list-none p-0 sm:mb-8 md:mb-0 md:gap-8'>
       {SOCIAL_LINKS_DATA.map(({ name, url }) => {
         const Icon = ICONS[name]
         return (

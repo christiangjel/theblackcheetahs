@@ -29,10 +29,10 @@ export type VideoEmbedConfig = {
 }
 
 export const VIDEO_EMBEDS: readonly VideoEmbedConfig[] = [
-  { src: 'https://www.youtube.com/embed/OY4sF4dCluc', width: 560, height: 315 },
-  { src: 'https://www.youtube.com/embed/NHBq3kYBaKI?si=NzzfKcEdUe-UyVt1', width: 560, height: 315 },
-  { src: 'https://www.youtube.com/embed/xhnwvr4cuek', width: 560, height: 315 },
-  { src: 'https://www.youtube.com/embed/5phQOblfels', width: 560, height: 315 },
+  { src: 'https://www.youtube-nocookie.com/embed/OY4sF4dCluc', width: 560, height: 315 },
+  { src: 'https://www.youtube-nocookie.com/embed/NHBq3kYBaKI?si=NzzfKcEdUe-UyVt1', width: 560, height: 315 },
+  { src: 'https://www.youtube-nocookie.com/embed/xhnwvr4cuek', width: 560, height: 315 },
+  { src: 'https://www.youtube-nocookie.com/embed/5phQOblfels', width: 560, height: 315 },
   { src: 'https://player.vimeo.com/video/77074704', width: 560, height: 255, allow: 'autoplay; fullscreen' }
 ]
 

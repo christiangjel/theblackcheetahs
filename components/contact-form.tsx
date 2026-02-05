@@ -27,8 +27,8 @@ export const ContactForm = () => {
     if (process.env.NODE_ENV === 'development') {
       return (
         <p className='text-sm text-amber-500'>
-          Set <code className='bg-black/20 px-1'>NEXT_PUBLIC_FORMSPREE_FORM_ID</code> in{' '}
-          <code className='bg-black/20 px-1'>.env.local</code> to enable the contact form.
+          Set <code className='px-1 bg-black/20'>NEXT_PUBLIC_FORMSPREE_FORM_ID</code> in{' '}
+          <code className='px-1 bg-black/20'>.env.local</code> to enable the contact form.
         </p>
       )
     }
@@ -86,10 +86,10 @@ export const ContactForm = () => {
         <input
           id='name'
           {...register('name')}
-          className='w-full bg-cheetah-dark-brown/45 border border-black p-2 text-white rounded-none text-sm'
+          className='w-full rounded-none border border-black bg-cheetah-dark-brown/45 p-2 text-sm text-white'
         />
         {errors.name && (
-          <p className='text-red-400 text-xs mt-1'>{errors.name.message}</p>
+          <p className='mt-1 text-xs text-red-400'>{errors.name.message}</p>
         )}
       </div>
 
@@ -101,10 +101,10 @@ export const ContactForm = () => {
           id='email'
           type='email'
           {...register('email')}
-          className='w-full bg-cheetah-dark-brown/45 border p-2 text-white rounded-none text-sm'
+          className='w-full rounded-none border bg-cheetah-dark-brown/45 p-2 text-sm text-white'
         />
         {errors.email && (
-          <p className='text-red-400 text-xs mt-1'>{errors.email.message}</p>
+          <p className='mt-1 text-xs text-red-400'>{errors.email.message}</p>
         )}
       </div>
 
@@ -116,17 +116,17 @@ export const ContactForm = () => {
           id='message'
           {...register('message')}
           rows={4}
-          className='w-full bg-cheetah-dark-brown/45 border p-2 text-white rounded-none text-sm'
+          className='w-full rounded-none border bg-cheetah-dark-brown/45 p-2 text-sm text-white'
         />
         {errors.message && (
-          <p className='text-red-400 text-xs mt-1'>{errors.message.message}</p>
+          <p className='mt-1 text-xs text-red-400'>{errors.message.message}</p>
         )}
       </div>
 
       <button
         type='submit'
         disabled={formspreeState.submitting || isSubmitting}
-        className='bg-cheetah-dark-brown text-black px-3 py-1 text-sm hover:bg-cheetah-brown hover:text-white transition-colors disabled:opacity-50'
+        className='bg-cheetah-dark-brown px-3 py-1 text-sm text-black transition-colors hover:bg-cheetah-brown hover:text-white disabled:opacity-50'
       >
         {formspreeState.submitting || isSubmitting
           ? c.submittingButton
