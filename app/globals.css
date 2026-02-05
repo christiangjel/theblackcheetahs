@@ -62,23 +62,27 @@ textarea {
     clear: both;
   }
 
-  /* width */
+  /* Scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
-    z-index: 9999;
   }
 
-  /* Track */
   ::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 5px;
-    z-index: 9999;
   }
 
-  /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #554130;
     border-radius: 5px;
-    z-index: 9999;
+  }
+
+  /* Focus styles for keyboard/screen reader users */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #705c4e;
+    outline-offset: 2px;
   }
 }

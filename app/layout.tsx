@@ -9,8 +9,20 @@ import { Preloader } from '@/components/preloader'
 const { metadata: meta, about } = content
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: meta.title,
   description: meta.description,
+  alternates: { canonical: '/' },
+  icons: {
+    icon: '/favicon.ico',
+    apple: [
+      { url: '/apple-touch-icon.png' },
+      { url: '/apple-touch-icon-57x57-precomposed.png', sizes: '57x57' },
+      { url: '/apple-touch-icon-72x72-precomposed.png', sizes: '72x72' },
+      { url: '/apple-touch-icon-114x114-precomposed.png', sizes: '114x114' },
+      { url: '/apple-touch-icon-144x144-precomposed.png', sizes: '144x144' }
+    ]
+  },
   openGraph: {
     title: meta.ogTitle,
     description: meta.ogDescription,
@@ -40,52 +52,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <link rel='icon' href='/favicon.ico' type='image/x-icon' />
-        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
-        <link
-          rel='apple-touch-icon'
-          sizes='57x57'
-          href='/apple-touch-icon-57x57-precomposed.png'
-        />
-        <link
-          rel='apple-touch-icon'
-          sizes='72x72'
-          href='/apple-touch-icon-72x72-precomposed.png'
-        />
-        <link
-          rel='apple-touch-icon'
-          sizes='114x114'
-          href='/apple-touch-icon-114x114-precomposed.png'
-        />
-        <link
-          rel='apple-touch-icon'
-          sizes='144x144'
-          href='/apple-touch-icon-144x144-precomposed.png'
-        />
-        <link
-          rel='apple-touch-icon-precomposed'
-          href='/apple-touch-icon-precomposed.png'
-        />
-        <link
-          rel='apple-touch-icon-precomposed'
-          sizes='57x57'
-          href='/apple-touch-icon-57x57-precomposed.png'
-        />
-        <link
-          rel='apple-touch-icon-precomposed'
-          sizes='72x72'
-          href='/apple-touch-icon-72x72-precomposed.png'
-        />
-        <link
-          rel='apple-touch-icon-precomposed'
-          sizes='114x114'
-          href='/apple-touch-icon-114x114-precomposed.png'
-        />
-        <link
-          rel='apple-touch-icon-precomposed'
-          sizes='144x144'
-          href='/apple-touch-icon-144x144-precomposed.png'
-        />
       </head>
       <body
         className='m-0 h-full w-full bg-black p-0 text-center font-futura text-base leading-relaxed text-white'

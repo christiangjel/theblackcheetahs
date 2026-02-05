@@ -25,13 +25,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### Environment (optional)
+### Environment
 
-Copy `.env.example` to `.env.local` and set:
+Copy `.env.example` to `.env.local` and set (or create `.env.local`):
 
 | Variable | Description |
 |----------|-------------|
-| `NEXT_PUBLIC_FORMSPREE_FORM_ID` | Formspree form ID for the contact form. If unset, a default is used. |
+| `NEXT_PUBLIC_FORMSPREE_FORM_ID` | Formspree form ID for the contact form. **Required** for the contact form to work. |
 
 ### Build and lint
 
@@ -48,7 +48,7 @@ npm run lint    # ESLint
 | `components/` | React components (sections, navbar, footer, form, etc.) |
 | `data/content.json` | All display copy (headings, paragraphs, labels, messages) |
 | `lib/` | Shared code: `content` (typed content), `constants` (URLs, section IDs, config), `fonts` |
-| `hooks/` | Custom hooks: `useMounted`, `useScrollSpy` |
+| `hooks/` | Custom hooks: `useScrollSpy` |
 | `public/` | Static assets (images, fonts, favicons) |
 
 - **Content:** Edit `data/content.json` to change visible text site-wide; components import from `@/lib/content`.

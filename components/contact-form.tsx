@@ -17,12 +17,23 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
-const FORMSPREE_FORM_ID =
-  process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID ?? 'xpwpbdwv'
+const FORMSPREE_FORM_ID = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
+const formIdForHook = FORMSPREE_FORM_ID ?? 'placeholder-no-form-id'
 
 export const ContactForm = () => {
-  const [formspreeState, handleFormspreeSubmit] =
-    useFormspree(FORMSPREE_FORM_ID)
+  const [formspreeState, handleFormspreeSubmit] = useFormspree(formIdForHook)
+
+  if (!FORMSPREE_FORM_ID) {
+    if (process.env.NODE_ENV === 'development') {
+      return (
+        <p className='text-sm text-amber-500'>
+          Set <code className='bg-black/20 px-1'>NEXT_PUBLIC_FORMSPREE_FORM_ID</code> in{' '}
+          <code className='bg-black/20 px-1'>.env.local</code> to enable the contact form.
+        </p>
+      )
+    }
+    return null
+  }
 
   const {
     register,
