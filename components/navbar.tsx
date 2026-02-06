@@ -6,11 +6,7 @@ import Link from 'next/link'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { content } from '@/lib/content'
-import {
-  SECTION_IDS,
-  STICKY_THRESHOLD,
-  SECTION_SCROLL_OFFSET
-} from '@/lib/constants'
+import { SECTION_IDS, STICKY_THRESHOLD } from '@/lib/constants'
 
 const NAV_LABELS: Record<string, string> = {
   about: content.nav.aboutLabel,
@@ -20,8 +16,7 @@ const NAV_LABELS: Record<string, string> = {
 
 export const Navbar = () => {
   const { isSticky, activeSection, setActiveSection } = useScrollSpy({
-    stickyThreshold: STICKY_THRESHOLD,
-    sectionOffset: SECTION_SCROLL_OFFSET
+    stickyThreshold: STICKY_THRESHOLD
   })
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
