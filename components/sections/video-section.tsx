@@ -10,7 +10,8 @@ function VideoEmbed({
   width,
   height,
   allow,
-  caption
+  caption,
+  isFirst
 }: {
   title: string
   src: string
@@ -18,9 +19,10 @@ function VideoEmbed({
   height: number
   allow?: string
   caption?: string
+  isFirst?: boolean
 }) {
   return (
-    <article className='mb-2 sm:mb-8'>
+    <article className={`mb-4 sm:mb-8 ${isFirst ? 'max-sm:pt-2' : ''}`}>
       <h3 className='mb-2 pt-4 p-0 font-rheiborn text-lg leading-[120%] uppercase lg:px-5 sm:mb-4 md:text-xl lg:text-3xl'>
         {title}
       </h3>
@@ -70,6 +72,7 @@ export const VideoSection = () => {
             height={VIDEO_EMBEDS[i].height}
             allow={VIDEO_EMBEDS[i].allow}
             caption={'caption' in item ? item.caption : undefined}
+            isFirst={i === 0}
           />
         ))}
       </div>
